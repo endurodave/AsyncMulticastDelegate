@@ -1,7 +1,7 @@
 # Asynchronous Multicast Delegates in C++
 A C++ standards compliant delegate library capable of targeting any callable function synchronously or asynchronously.
 
-Originally published on CodeProject at: <a href="https://www.codeproject.com/Articles/1160934/Asynchronous-Multicast-Delegates-in-Cplusplus"><strong>Asynchronous Multicast Delegates in C++</strong></a>
+Originally published on CodeProject at: <a href="http://www.codeproject.com/Articles/1160934/Asynchronous-Multicast-Delegates-in-Cplusplus"><strong>Asynchronous Multicast Delegates in C++</strong></a>
 
 <h2>Introduction</h2>
 
