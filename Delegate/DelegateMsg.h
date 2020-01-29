@@ -133,7 +133,7 @@ public:
 	Param1 GetParam1() const { return m_param1;	}
 	Param2 GetParam2() const { return m_param2;	}
 	Param3 GetParam3() const { return m_param3;	}
-	Param3 GetParam4() const { return m_param4;	}
+	Param4 GetParam4() const { return m_param4;	}
 
 private:
 	/// The data argument passed into the invoked function
@@ -165,7 +165,7 @@ public:
 	Param1 GetParam1() const { return m_param1;	}
 	Param2 GetParam2() const { return m_param2;	}
 	Param3 GetParam3() const { return m_param3;	}
-	Param3 GetParam4() const { return m_param4;	}
+	Param4 GetParam4() const { return m_param4;	}
 	Param5 GetParam5() const { return m_param5;	}
 
 private:
@@ -174,7 +174,7 @@ private:
 	Param2 m_param2;
 	Param3 m_param3;
 	Param4 m_param4;
-	Param4 m_param5;
+	Param5 m_param5;
 };
 
 }
