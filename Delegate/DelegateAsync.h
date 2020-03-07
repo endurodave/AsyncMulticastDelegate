@@ -107,7 +107,7 @@ public:
 	}
 };
 
-/// @brief Asynchronous memeber delegate that invokes the target function on the specified thread of control.
+/// @brief Asynchronous member delegate that invokes the target function on the specified thread of control.
 template <class TClass> 
 class DelegateMemberAsync0 : public DelegateMember0<TClass>, public IDelegateInvoker {
 public:

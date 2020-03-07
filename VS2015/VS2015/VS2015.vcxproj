@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,32 +22,32 @@
     <ProjectGuid>{BE2A5722-AC42-4FB3-BF0C-F5BA5645225A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>VS2015</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -148,12 +148,16 @@
     <ClInclude Include="..\..\Delegate\DelegateAsync.h" />
     <ClInclude Include="..\..\Delegate\DelegateAsyncWait.h" />
     <ClInclude Include="..\..\Delegate\DelegateOpt.h" />
+    <ClInclude Include="..\..\Delegate\DelegateRemoteInvoker.h" />
+    <ClInclude Include="..\..\Delegate\DelegateRemoteRecv.h" />
+    <ClInclude Include="..\..\Delegate\DelegateRemoteSend.h" />
     <ClInclude Include="..\..\Delegate\DelegateSpAsync.h" />
     <ClInclude Include="..\..\Delegate\DelegateInvoker.h" />
     <ClInclude Include="..\..\Delegate\DelegateLib.h" />
     <ClInclude Include="..\..\Delegate\DelegateMsg.h" />
     <ClInclude Include="..\..\Delegate\DelegateSp.h" />
     <ClInclude Include="..\..\Delegate\DelegateThread.h" />
+    <ClInclude Include="..\..\Delegate\DelegateTransport.h" />
     <ClInclude Include="..\..\Delegate\LockGuard.h" />
     <ClInclude Include="..\..\Delegate\MulticastDelegate.h" />
     <ClInclude Include="..\..\Delegate\MulticastDelegateBase.h" />
@@ -176,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Delegate\Allocator.cpp" />
+    <ClCompile Include="..\..\Delegate\DelegateRemoteInvoker.cpp" />
     <ClCompile Include="..\..\Delegate\DelegateUnitTests.cpp" />
     <ClCompile Include="..\..\Delegate\LockGuard.cpp" />
     <ClCompile Include="..\..\Delegate\MulticastDelegateBase.cpp" />

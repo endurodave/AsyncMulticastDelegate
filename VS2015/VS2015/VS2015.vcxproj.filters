@@ -98,6 +98,18 @@
     <ClInclude Include="..\..\Port\WorkerThreadWin.h">
       <Filter>Port</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Delegate\DelegateRemoteInvoker.h">
+      <Filter>Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Delegate\DelegateRemoteRecv.h">
+      <Filter>Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Delegate\DelegateRemoteSend.h">
+      <Filter>Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Delegate\DelegateTransport.h">
+      <Filter>Delegate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Examples\SysData.cpp">
@@ -137,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Port\WorkerThreadWin.cpp">
       <Filter>Port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Delegate\DelegateRemoteInvoker.cpp">
+      <Filter>Delegate</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
