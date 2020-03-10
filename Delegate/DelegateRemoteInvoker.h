@@ -38,15 +38,6 @@ private:
         return map;
     }
 
-    class LockCreateDestroy
-    {
-    public:
-        LockCreateDestroy(LOCK& lock) : m_lock(lock) { LockGuard::Create(&m_lock); }
-        ~LockCreateDestroy() { LockGuard::Destroy(&m_lock); }
-    private:
-        LOCK& m_lock;
-    };    
-
     static LOCK* GetLock()
     {
         static LOCK lock;

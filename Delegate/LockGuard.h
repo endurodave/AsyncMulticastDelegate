@@ -47,6 +47,15 @@ private:
 	LOCK* m_lock;
 };
 
+class LockCreateDestroy
+{
+public:
+    LockCreateDestroy(LOCK& lock) : m_lock(lock) { LockGuard::Create(&m_lock); }
+    ~LockCreateDestroy() { LockGuard::Destroy(&m_lock); }
+private:
+    LOCK & m_lock;
+};
+
 }
 
 #endif 
