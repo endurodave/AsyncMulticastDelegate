@@ -1,27 +1,48 @@
 #include "DelegateRemoteInvoker.h"
 #include "Fault.h"
 
-namespace DelegateLib {
-    std::map<int, DelegateRemoteInvoker*> DelegateRemoteInvoker::m_idMap;
-    LOCK DelegateRemoteInvoker::m_lock;
-
-    DelegateRemoteInvoker::DelegateRemoteInvoker(DelegateIdType id)
+namespace DelegateLib 
+{
+    DelegateRemoteInvoker::DelegateRemoteInvoker(DelegateIdType id) : m_id(id)
     {
-        LockGuard lockGuard(&m_lock);
+        LockGuard lockGuard(GetLock());
 
         // Don't allow duplicate entries
-        std::map<DelegateIdType, DelegateRemoteInvoker*>::iterator it = m_idMap.find(id);
-        ASSERT_TRUE(it != m_idMap.end());
+        std::map<DelegateIdType, DelegateRemoteInvoker*>::iterator it = GetMap().find(m_id);
+        ASSERT_TRUE(it == GetMap().end());
 
-        m_idMap[id] = this;
+        GetMap()[m_id] = this;
+    }
+
+    DelegateRemoteInvoker::~DelegateRemoteInvoker()
+    {
+        LockGuard lockGuard(GetLock());
+        GetMap().erase(m_id);
     }
     
-    DelegateRemoteInvoker* DelegateRemoteInvoker::GetInvoker(DelegateIdType id)
+    bool DelegateRemoteInvoker::Invoke(std::istream& s)
     {
-        LockGuard lockGuard(&m_lock);
-        std::map<DelegateIdType, DelegateRemoteInvoker*>::iterator it = m_idMap.find(id);
-        if (it != m_idMap.end())
-            return (*it).second;
-        return NULL; 
+        // Get id from stream
+        DelegateIdType id;
+        s.read(reinterpret_cast<char*>(&id), sizeof(DelegateIdType));
+        s.seekg(0);
+
+        // Find invoker instance matching the id
+        std::map<DelegateIdType, DelegateRemoteInvoker*>::iterator it;
+        {
+            LockGuard lockGuard(GetLock());
+            it = GetMap().find(id);
+        }
+        if (it != GetMap().end())
+        {
+            // Invoke the delegate instance
+            (*it).second->DelegateInvoke(s);
+            return true;
+        }
+        else
+        {
+            // No delegate found
+            return false;
+        }
     }
 }

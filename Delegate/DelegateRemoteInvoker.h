@@ -17,17 +17,42 @@ public:
     /// @param[in] id - an id shared by both remote systems.
     DelegateRemoteInvoker(DelegateIdType id);
 
-	/// Called to invoke the callback by the remote system. 
-    /// @param[in] s - the incoming remote message stream. 
-	virtual void DelegateInvoke(std::istream& s) = 0;
+    /// Destructor
+    ~DelegateRemoteInvoker();
 
-    /// Get an invoker by id
-    /// @return A delegate invoker or null if not matching id. 
-    static DelegateRemoteInvoker* GetInvoker(DelegateIdType id);
+    /// Invoke a remote delegate
+    /// @param[in] s - the incoming remote message stream. 
+    static bool Invoke(std::istream& s);
+
+protected:
+    /// Called to invoke the callback by the remote system. 
+    /// @param[in] s - the incoming remote message stream. 
+    virtual void DelegateInvoke(std::istream& s) = 0;
 
 private:
-    static std::map<DelegateIdType, DelegateRemoteInvoker*> m_idMap;
-    static LOCK m_lock; 
+    DelegateIdType m_id;
+
+    static std::map<DelegateIdType, DelegateRemoteInvoker*>& GetMap()
+    {
+        static std::map<DelegateIdType, DelegateRemoteInvoker*> map;
+        return map;
+    }
+
+    class LockCreateDestroy
+    {
+    public:
+        LockCreateDestroy(LOCK& lock) : m_lock(lock) { LockGuard::Create(&m_lock); }
+        ~LockCreateDestroy() { LockGuard::Destroy(&m_lock); }
+    private:
+        LOCK& m_lock;
+    };    
+
+    static LOCK* GetLock()
+    {
+        static LOCK lock;
+        static LockCreateDestroy lockCreateDestroy(lock);
+        return &lock;
+    }
 };
 
 }

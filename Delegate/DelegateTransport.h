@@ -6,7 +6,9 @@
 namespace DelegateLib {
 
 /// @brief Each platform specific implementation must inherit from DelegateTransport
-/// and provide an implementation for DispatchDelegate().
+/// and provide an implementation for DispatchDelegate(). The transport can be anything
+/// including Ethernet, a file, serial, data pipe, etc... Just so long as the stream 
+/// of bytes arrives at the remote system (or process). 
 class DelegateTransport
 {
 public:
