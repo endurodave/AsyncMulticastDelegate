@@ -20,7 +20,7 @@ public:
 	/// bytes, the DelegateRemoteInvoker::DelegateInvoke() function must be called to 
     /// execute the callback on the remote system. 
 	/// @param[in] s - an outgoing stream to send to the remote CPU.
-    virtual void DispatchDelegate(std::ostream& s) = 0;
+    virtual void DispatchDelegate(std::iostream& s) = 0;
 };
 
 }

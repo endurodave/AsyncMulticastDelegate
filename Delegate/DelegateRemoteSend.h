@@ -15,7 +15,7 @@ namespace DelegateLib {
 template <class Param1>
 class DelegateRemoteSend1 : public Delegate1<Param1> {
 public:
-    DelegateRemoteSend1(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) : 
+    DelegateRemoteSend1(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) : 
         m_transport(transport), m_stream(stream), m_id(id) { }
 
 	virtual DelegateRemoteSend1* Clone() const { return new DelegateRemoteSend1(*this); }
@@ -35,14 +35,14 @@ public:
 
 private:
 	DelegateTransport& m_transport;		// Object sends data to remote
-    std::ostream& m_stream;             // Storage for remote message 
+    std::iostream& m_stream;            // Storage for remote message 
     DelegateIdType m_id;                // Remote delegate identifier
 };
 
 template <class Param1, class Param2>
 class DelegateRemoteSend2 : public Delegate2<Param1, Param2> {
 public:
-    DelegateRemoteSend2(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) :
+    DelegateRemoteSend2(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) :
         m_transport(transport), m_stream(stream), m_id(id) { }
 
     virtual DelegateRemoteSend2* Clone() const { return new DelegateRemoteSend2(*this); }
@@ -64,14 +64,14 @@ public:
 
 private:
     DelegateTransport & m_transport;    // Object sends data to remote
-    std::ostream& m_stream;             // Storage for remote message 
+    std::iostream& m_stream;            // Storage for remote message 
     DelegateIdType m_id;                // Remote delegate identifier
 };
 
 template <class Param1, class Param2, class Param3>
 class DelegateRemoteSend3 : public Delegate3<Param1, Param2, Param3> {
 public:
-    DelegateRemoteSend3(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) :
+    DelegateRemoteSend3(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) :
         m_transport(transport), m_stream(stream), m_id(id) { }
 
     virtual DelegateRemoteSend3* Clone() const { return new DelegateRemoteSend3(*this); }
@@ -94,14 +94,14 @@ public:
 
 private:
     DelegateTransport & m_transport;    // Object sends data to remote
-    std::ostream& m_stream;             // Storage for remote message 
+    std::iostream& m_stream;            // Storage for remote message 
     DelegateIdType m_id;                // Remote delegate identifier
 };
 
 template <class Param1, class Param2, class Param3, class Param4>
 class DelegateRemoteSend4 : public Delegate4<Param1, Param2, Param3, Param4> {
 public:
-    DelegateRemoteSend4(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) :
+    DelegateRemoteSend4(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) :
         m_transport(transport), m_stream(stream), m_id(id) { }
 
     virtual DelegateRemoteSend4* Clone() const { return new DelegateRemoteSend4(*this); }
@@ -125,14 +125,14 @@ public:
 
 private:
     DelegateTransport & m_transport;    // Object sends data to remote
-    std::ostream& m_stream;             // Storage for remote message 
+    std::iostream& m_stream;            // Storage for remote message 
     DelegateIdType m_id;                // Remote delegate identifier
 };
 
 template <class Param1, class Param2, class Param3, class Param4, class Param5>
 class DelegateRemoteSend5 : public Delegate5<Param1, Param2, Param3, Param4, Param5> {
 public:
-    DelegateRemoteSend5(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) :
+    DelegateRemoteSend5(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) :
         m_transport(transport), m_stream(stream), m_id(id) { }
 
     virtual DelegateRemoteSend5* Clone() const { return new DelegateRemoteSend5(*this); }
@@ -157,37 +157,37 @@ public:
 
 private:
     DelegateTransport & m_transport;    // Object sends data to remote
-    std::ostream& m_stream;             // Storage for remote message 
+    std::iostream& m_stream;            // Storage for remote message 
     DelegateIdType m_id;                // Remote delegate identifier
 };
 
 //N=1
 template <class Param1>
-DelegateRemoteSend1<Param1> MakeDelegate(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) {
+DelegateRemoteSend1<Param1> MakeDelegate(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) {
     return DelegateRemoteSend1<Param1>(transport, stream, id);
 }
 
 //N=2
 template <class Param1, class Param2>
-DelegateRemoteSend2<Param1, Param2> MakeDelegate(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) {
+DelegateRemoteSend2<Param1, Param2> MakeDelegate(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) {
     return DelegateRemoteSend2<Param1, Param2>(transport, stream, id);
 }
 
 //N=3
 template <class Param1, class Param2, class Param3>
-DelegateRemoteSend3<Param1, Param2, Param3> MakeDelegate(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) {
+DelegateRemoteSend3<Param1, Param2, Param3> MakeDelegate(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) {
     return DelegateRemoteSend3<Param1, Param2, Param3>(transport, stream, id);
 }
 
 //N=4
 template <class Param1, class Param2, class Param3, class Param4>
-DelegateRemoteSend4<Param1, Param2, Param3, Param4> MakeDelegate(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) {
+DelegateRemoteSend4<Param1, Param2, Param3, Param4> MakeDelegate(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) {
     return DelegateRemoteSend4<Param1, Param2, Param3, Param4>(transport, stream, id);
 }
 
 //N=5
 template <class Param1, class Param2, class Param3, class Param4, class Param5>
-DelegateRemoteSend5<Param1, Param2, Param3, Param4, Param5> MakeDelegate(DelegateTransport& transport, std::ostream& stream, DelegateIdType id) {
+DelegateRemoteSend5<Param1, Param2, Param3, Param4, Param5> MakeDelegate(DelegateTransport& transport, std::iostream& stream, DelegateIdType id) {
     return DelegateRemoteSend5<Param1, Param2, Param3, Param4, Param5>(transport, stream, id);
 }
 
