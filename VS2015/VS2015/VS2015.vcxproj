@@ -180,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Delegate\Allocator.cpp" />
+    <ClCompile Include="..\..\Delegate\DelegateAsync.cpp" />
     <ClCompile Include="..\..\Delegate\DelegateRemoteInvoker.cpp" />
     <ClCompile Include="..\..\Delegate\DelegateUnitTests.cpp" />
     <ClCompile Include="..\..\Delegate\LockGuard.cpp" />

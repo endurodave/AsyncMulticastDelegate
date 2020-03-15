@@ -153,5 +153,8 @@
     <ClCompile Include="..\..\Delegate\DelegateRemoteInvoker.cpp">
       <Filter>Delegate</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Delegate\DelegateAsync.cpp">
+      <Filter>Delegate</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

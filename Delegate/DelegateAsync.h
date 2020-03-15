@@ -1022,9 +1022,7 @@ DelegateMemberAsync0<TClass> MakeDelegate(TClass* object, void (TClass::*func)()
 	return DelegateMemberAsync0<TClass>(object, func, thread);
 }
 
-static DelegateFreeAsync0 MakeDelegate(void (*func)(), DelegateThread* thread) { 
-	return DelegateFreeAsync0(func, thread);
-}
+DelegateFreeAsync0 MakeDelegate(void(*func)(), DelegateThread* thread);
 
 //N=1
 template <class TClass, class Param1>
