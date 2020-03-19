@@ -5,16 +5,13 @@
 
 namespace DelegateLib {
 
-/// @brief Each platform specific implementation must inherit from DelegateTransport
+/// @brief Each platform specific implementation must inherit from IDelegateTransport
 /// and provide an implementation for DispatchDelegate(). The transport can be anything
 /// including Ethernet, a file, serial, data pipe, etc... Just so long as the stream 
 /// of bytes arrives at the remote system (or process). 
-class DelegateTransport
+class IDelegateTransport
 {
 public:
-	/// Destructor
-	virtual ~DelegateTransport() {}
-
 	/// Dispatch a stream of bytes to a remote system. The implementer is responsible
 	/// for sending the bytes over a communication link. Once the receiver obtains the 
 	/// bytes, the DelegateRemoteInvoker::DelegateInvoke() function must be called to 
