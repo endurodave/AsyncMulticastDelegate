@@ -85,8 +85,10 @@ public:
 
         Param1 p1 = param1.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateMember1<TClass, Param1>::operator()(p1);
     }
@@ -143,9 +145,12 @@ public:
         Param1 p1 = param1.Get();
         Param2 p2 = param2.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateMember2<TClass, Param1, Param2>::operator()(p1, p2);
     }
@@ -204,10 +209,14 @@ public:
         Param2 p2 = param2.Get();
         Param3 p3 = param3.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p3;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateMember3<TClass, Param1, Param2, Param3>::operator()(p1, p2, p3);
     }
@@ -268,11 +277,16 @@ public:
         Param3 p3 = param3.Get();
         Param4 p4 = param4.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p3;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p4;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateMember4<TClass, Param1, Param2, Param3, Param4>::operator()(p1, p2, p3, p4);
     }
@@ -335,12 +349,18 @@ public:
         Param4 p4 = param4.Get();
         Param4 p5 = param5.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p3;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p4;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p5;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateMember5<TClass, Param1, Param2, Param3, Param4, Param5>::operator()(p1, p2, p3, p4, p5);
     }
@@ -378,8 +398,10 @@ public:
 
         Param1 p1 = param1.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateFree1<Param1>::operator()(p1);
     }
@@ -419,9 +441,12 @@ public:
         Param1 p1 = param1.Get();
         Param2 p2 = param2.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateFree2<Param1, Param2>::operator()(p1, p2);
     }
@@ -463,10 +488,14 @@ public:
         Param2 p2 = param2.Get();
         Param3 p3 = param3.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p3;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateFree3<Param1, Param2, Param3>::operator()(p1, p2, p3);
     }
@@ -510,11 +539,16 @@ public:
         Param3 p3 = param3.Get();
         Param4 p4 = param4.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p3;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p4;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateFree4<Param1, Param2, Param3, Param4>::operator()(p1, p2, p3, p4);
     }
@@ -560,12 +594,18 @@ public:
         Param4 p4 = param4.Get();
         Param5 p5 = param5.Get();
 
-        stream.read(reinterpret_cast<char*>(&m_id), sizeof(DelegateIdType));
+        stream >> m_id;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p1;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p2;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p3;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p4;
+        stream.seekg(stream.tellg() + std::streampos(1));
         stream >> p5;
+        stream.seekg(stream.tellg() + std::streampos(1));
 
         DelegateFree5<Param1, Param2, Param3, Param4, Param5>::operator()(p1, p2, p3, p4, p5);
     }

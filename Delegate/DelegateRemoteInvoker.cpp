@@ -24,7 +24,7 @@ namespace DelegateLib
     {
         // Get id from stream
         DelegateIdType id;
-        s.read(reinterpret_cast<char*>(&id), sizeof(DelegateIdType));
+        s >> id;
         s.seekg(0);
 
         // Find invoker instance matching the id
