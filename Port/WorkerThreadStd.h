@@ -1,6 +1,9 @@
 #ifndef _THREAD_STD_H
 #define _THREAD_STD_H
 
+// @see https://www.codeproject.com/Articles/1169105/Cplusplus-std-thread-Event-Loop-with-Message-Queue
+// David Lafreniere, Feb 2017.
+
 #include "DelegateOpt.h"
 #if USE_STD_THREADS
 
@@ -39,16 +42,20 @@ public:
 	virtual void DispatchDelegate(DelegateLib::DelegateMsgBase* msg);
 
 private:
-	WorkerThread(const WorkerThread&);
-	WorkerThread& operator=(const WorkerThread&);
+	WorkerThread(const WorkerThread&) = delete;
+	WorkerThread& operator=(const WorkerThread&) = delete;
 
 	/// Entry point for the thread
 	void Process();
 
-	std::thread* m_thread;
-	std::queue<ThreadMsg*> m_queue;
+    /// Entry point for timer thread
+    void TimerThread();
+
+	std::unique_ptr<std::thread> m_thread;
+	std::queue<std::shared_ptr<ThreadMsg>> m_queue;
 	std::mutex m_mutex;
 	std::condition_variable m_cv;
+    std::atomic<bool> m_timerExit;
 	const CHAR* THREAD_NAME;
 };
 

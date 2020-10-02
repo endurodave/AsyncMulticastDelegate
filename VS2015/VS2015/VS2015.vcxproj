@@ -93,6 +93,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -172,6 +173,7 @@
     <ClInclude Include="..\..\Port\Fault.h" />
     <ClInclude Include="..\..\Port\ThreadMsg.h" />
     <ClInclude Include="..\..\Port\ThreadWin.h" />
+    <ClInclude Include="..\..\Port\Timer.h" />
     <ClInclude Include="..\..\Port\UserMsgs.h" />
     <ClInclude Include="..\..\Port\WorkerThreadStd.h" />
     <ClInclude Include="..\..\Port\WorkerThreadWin.h" />
@@ -192,6 +194,7 @@
     <ClCompile Include="..\..\main.cpp" />
     <ClCompile Include="..\..\Port\Fault.cpp" />
     <ClCompile Include="..\..\Port\ThreadWin.cpp" />
+    <ClCompile Include="..\..\Port\Timer.cpp" />
     <ClCompile Include="..\..\Port\WorkerThreadStd.cpp" />
     <ClCompile Include="..\..\Port\WorkerThreadWin.cpp" />
     <ClCompile Include="..\..\stdafx.cpp" />

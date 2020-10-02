@@ -110,6 +110,9 @@
     <ClInclude Include="..\..\Delegate\DelegateTransport.h">
       <Filter>Delegate</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Port\Timer.h">
+      <Filter>Port</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Examples\SysData.cpp">
@@ -155,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Delegate\DelegateAsync.cpp">
       <Filter>Delegate</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Port\Timer.cpp">
+      <Filter>Port</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

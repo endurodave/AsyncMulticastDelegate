@@ -1,7 +1,11 @@
 #include "DelegateLib.h"
 #include "SysData.h"
 #include "SysDataNoLock.h"
+#include "Timer.h"
 #include <iostream>
+#if USE_CPLUSPLUS_11
+#include <thread>
+#endif
 #if USE_STD_THREADS
 #include "WorkerThreadStd.h"
 #elif USE_WIN32_THREADS
@@ -187,6 +191,12 @@ namespace DelegateLib
 // An instance of TestStructNoCopy guaranteed to exist when the asynchronous callback occurs.  
 static TestStructNoCopy testStructNoCopy(999);
 
+void TimerExpiredCb(void)
+{
+    static int count = 0;
+    cout << "TimerExpiredCb " << count++ << endl;
+}
+
 extern void DelegateUnitTests();
 
 //------------------------------------------------------------------------------
@@ -208,6 +218,12 @@ int main(void)
 	// Start the worker threads
 	ThreadWin::StartAllThreads();
 #endif
+
+    // Create a timer that expires every 250mS and calls 
+    // TimerExpiredCb on workerThread1 upon expiration
+    Timer timer;
+    timer.Expired = MakeDelegate(&TimerExpiredCb, &workerThread1);
+    timer.Start(250);
 
 	// Run all unit tests (uncomment to run unit tests)
 	DelegateUnitTests();
@@ -394,7 +410,18 @@ int main(void)
 	previousMode = SysDataNoLock::GetInstance().SetSystemModeAsyncWaitAPI(SystemMode::STARTING);
 	previousMode = SysDataNoLock::GetInstance().SetSystemModeAsyncWaitAPI(SystemMode::NORMAL);
 
+    timer.Stop();
+    timer.Expired.Clear();
+
+#ifdef USE_CPLUSPLUS_11
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+#endif
+
 	workerThread1.ExitThread();
+
+#ifdef USE_CPLUSPLUS_11
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+#endif
 
 	return 0;
 }
