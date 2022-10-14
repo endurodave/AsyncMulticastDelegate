@@ -39,6 +39,44 @@ Originally published on CodeProject at: <a href="http://www.codeproject.com/Arti
 
 <p>I&rsquo;ve created four versions of the &ldquo;asynchronous callback&rdquo; idea; three C++ versions and one C version. See the&nbsp;<strong>References</strong>&nbsp;section at the end of the article for links to the other implementations.</p>
 
+<h2>2022 Library Updates</h2>
+
+<p>The C++ delegate library was updated with the following features:</p>
+
+<ol>
+	<li>Function-like delegate syntax</li>
+    <li><code>AsyncInvoke()</code> to simplify asynchronous function invocation</li>
+	<li>C++11 or higher C++ compiler required</li>
+</ol>
+
+<p>The old vs. new syntax comparison is below. The old syntax below uses standard template arguments. It also requires using the number or function arguments as part of the delegate type (e.g. <code>DelegateFree1<></code> is one function argument delegate).</p>
+
+<pre lang="C++">
+// Create a delegate bound to a free function then invoke
+DelegateFree1&lt;int&gt; delegateFree = MakeDelegate(&FreeFuncInt);
+delegateFree(123);
+
+// Create a delegate bound to a member function then invoke
+DelegateMember1&lt;TestClass, TestStruct*&gt; delegateMember = MakeDelegate(&testClass, &TestClass::MemberFunc);
+delegateMember(&testStruct);
+</pre>
+
+<p>The new syntax uses function-like template arguments for improved readability:</p>
+
+<pre lang="C++">
+// Create a delegate bound to a free function then invoke
+DelegateFree&lt;void (int)&gt; delegateFree = MakeDelegate(&FreeFuncInt);
+delegateFree(123);
+
+// Create a delegate bound to a member function then invoke
+DelegateMember&lt;void (TestClass(TestStruct*))&gt; delegateMember = MakeDelegate(&testClass, &TestClass::MemberFunc);
+delegateMember(&testStruct);
+</pre>
+
+<p>Prefer the 2022 updated version of the library located at the link below:</p>
+
+<p><strong><a href="https://github.com/endurodave/AsyncMulticastDelegateCpp11">Asynchronous Multicast Delegates in C++ (2022)</a></strong> - by David Lafreniere (GitHub)</p>
+
 <h2>Delegates Background</h2>
 
 <p>If you&rsquo;re not familiar with a delegate, the concept is quite simple. A delegate can be thought of as a super function pointer. In C++, there&#39;s no pointer type capable of pointing to all the possible function variations: instance member, virtual, const, static, and free (global). A function pointer can&rsquo;t point to instance member functions, and pointers to member functions have all sorts of limitations. However, delegate classes can, in a type-safe way, point to any function provided the function signature matches. In short, a delegate points to any function with a matching signature to support anonymous function invocation.</p>
