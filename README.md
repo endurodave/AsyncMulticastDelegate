@@ -77,6 +77,8 @@ delegateMember(&testStruct);
 
 <p><strong><a href="https://github.com/endurodave/AsyncMulticastDelegateCpp11">Asynchronous Multicast Delegates in C++ (2022)</a></strong> - by David Lafreniere (GitHub)</p>
 
+<p>This version of the library supports C++03 compilers whereas the 2022 update requires C++11 or higher.</p>
+
 <h2>Delegates Background</h2>
 
 <p>If you&rsquo;re not familiar with a delegate, the concept is quite simple. A delegate can be thought of as a super function pointer. In C++, there&#39;s no pointer type capable of pointing to all the possible function variations: instance member, virtual, const, static, and free (global). A function pointer can&rsquo;t point to instance member functions, and pointers to member functions have all sorts of limitations. However, delegate classes can, in a type-safe way, point to any function provided the function signature matches. In short, a delegate points to any function with a matching signature to support anonymous function invocation.</p>
