@@ -10,7 +10,7 @@ Semaphore::Semaphore()
 #if USE_WIN32_THREADS
 	: m_sema(INVALID_HANDLE_VALUE)
 #elif USE_STD_THREADS
-	: m_flag(false)
+	: m_signaled(false)
 #endif
 {
 }
@@ -76,18 +76,18 @@ bool Semaphore::Wait(int timeout)
 	std::cv_status status = std::cv_status::no_timeout;
 	if (timeout < 0)
 	{
-		while (!m_flag)
+		while (!m_signaled)
 			m_sema.wait(lk);
 	}
 	else
 	{
-		while (!m_flag && status == std::cv_status::no_timeout)
+		while (!m_signaled && status == std::cv_status::no_timeout)
 			status = m_sema.wait_for(lk, std::chrono::milliseconds(timeout));
 	}
 
-	if (m_flag)
+	if (m_signaled)
 	{
-		m_flag = false;
+		m_signaled = false;
 		return true;
 	}
 	else
@@ -107,8 +107,10 @@ void Semaphore::Signal()
 	BOOL val = SetEvent(m_sema);
 	ASSERT_TRUE(val != 0);
 #elif USE_STD_THREADS
-	std::unique_lock<std::mutex> lk(m_lock);
-	m_flag = true;
+	{
+		std::unique_lock<std::mutex> lk(m_lock);
+		m_signaled = true;
+	}
 	m_sema.notify_one();
 #endif
 }

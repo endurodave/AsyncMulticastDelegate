@@ -51,7 +51,7 @@ private:
 
 #if USE_STD_THREADS	
 	std::mutex m_lock;
-	std::atomic<bool> m_flag;
+	bool m_signaled;
 #endif
 };
 
