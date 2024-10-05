@@ -36,6 +36,8 @@ Originally published on CodeProject at: <a href="http://www.codeproject.com/Arti
 	<li><strong>Automatic Heap Handling</strong> &ndash; automatically copy argument data to the heap for safe transport through a message queue</li>
 	<li><strong>Fixed Block Allocator</strong> &ndash; optionally divert heap allocation to fixed block memory pools</li>
 	<li><strong>Any OS</strong> &ndash; easy porting to any OS. Win32 and <code>std::thread</code> ports included</li>
+    <li><strong>32/64-bit</strong> - Support for 32 and 64-bit projects.</li>
+	<li><strong>CMake</strong> - CMake supports most toolchains including Windows and Linux.</li>
 	<li><strong>Visual Studio and Eclipse</strong> - VC++ and GCC projects included</li>
 	<li><strong>Unit Tests</strong> - extensive unit testing of the delegate library included</li>
 	<li><strong>No External Libraries</strong> &ndash; delegate does not rely upon external libraries</li>
@@ -43,54 +45,6 @@ Originally published on CodeProject at: <a href="http://www.codeproject.com/Arti
 </ol>
 
 <p>The delegate implementation significantly eases multithreaded application development by executing the delegate function with all of the function arguments on the thread of control that you specify. The framework handles all of the low-level machinery to safely invoke any function signature on a target thread.</p>
-
-<p>Windows 2008, 2015 and Eclipse projects are included for easy experimentation. While the Windows operating system provides threads, locks and message queues, the code is partitioned for easy porting to other embedded or PC-based systems. Building the <code>std::thread</code> version means any C++11 compiler supporting the C++ Standard Library thread API is able to use the delegates with no porting effort.</p>
-
-<p>Three asynchronous multicast callback implementations are available: Two in C++ and one written in C. See the <a href="#References">References</a> section for the two other related articles.</p>
-
-<p>A remote procedure call (RPC) using C++ delegates extends this&nbsp;library to include inter-process and inter-processor communications. See the <a href="#References">References</a> section for the this related article.</p>
-
-<p>I&rsquo;ve created four versions of the &ldquo;asynchronous callback&rdquo; idea; three C++ versions and one C version. See the&nbsp;<strong>References</strong>&nbsp;section at the end of the article for links to the other implementations.</p>
-
-<h2>2022 Library Updates</h2>
-
-<p>The C++ delegate library was updated with the following features:</p>
-
-<ol>
-	<li>Function-like delegate syntax</li>
-    <li><code>AsyncInvoke()</code> to simplify asynchronous function invocation</li>
-	<li>C++11 or higher C++ compiler required</li>
-</ol>
-
-<p>The old vs. new syntax comparison is below. The old syntax below uses standard template arguments. It also requires using the number or function arguments as part of the delegate type (e.g. <code>DelegateFree1<></code> is one function argument delegate).</p>
-
-<pre lang="C++">
-// Create a delegate bound to a free function then invoke
-DelegateFree1&lt;int&gt; delegateFree = MakeDelegate(&FreeFuncInt);
-delegateFree(123);
-
-// Create a delegate bound to a member function then invoke
-DelegateMember1&lt;TestClass, TestStruct*&gt; delegateMember = MakeDelegate(&testClass, &TestClass::MemberFunc);
-delegateMember(&testStruct);
-</pre>
-
-<p>The new syntax uses function-like template arguments for improved readability:</p>
-
-<pre lang="C++">
-// Create a delegate bound to a free function then invoke
-DelegateFree&lt;void (int)&gt; delegateFree = MakeDelegate(&FreeFuncInt);
-delegateFree(123);
-
-// Create a delegate bound to a member function then invoke
-DelegateMember&lt;void (TestClass(TestStruct*))&gt; delegateMember = MakeDelegate(&testClass, &TestClass::MemberFunc);
-delegateMember(&testStruct);
-</pre>
-
-<p>Prefer the 2022 updated version of the library located at the link below:</p>
-
-<p><strong><a href="https://github.com/endurodave/AsyncMulticastDelegateCpp11">Asynchronous Multicast Delegates in C++ (2022)</a></strong> - by David Lafreniere (GitHub)</p>
-
-<p>This version of the library supports C++03 compilers whereas the 2022 update requires C++11 or higher.</p>
 
 <h2>Delegates Background</h2>
 
@@ -109,6 +63,28 @@ delegateMember(&testStruct);
 <p>The article I wrote here on Code Project entitled &ldquo;<a href="https://www.codeproject.com/Articles/1092727/Asynchronous-Multicast-Callbacks-with-Inter-Thread"><strong>Asynchronous Multicast Callbacks with Inter-Thread Messaging</strong></a>&rdquo; provided an asynchronous multicast callback similar in concept to what is proposed here, but the callback signature was fixed and only one templatized function argument was supported. It also limited the callback function type to static member or free functions. Instance member functions were not supported. The advantage of accepting these limitations is that the <code>AsycnCallback&lt;&gt;</code> implementation is much simpler and compact.</p>
 
 <p>This C++ delegate implementation is full featured and allows calling any function, even instance member functions, with any arguments either synchronously or asynchronously. The delegate library makes binding to and invoking any function a snap.</p>
+
+<h2>Project Build</h2>
+
+<a href="https://www.cmake.org">CMake</a> is used to create the build files. CMake is free and open-source software. Windows, Linux and other toolchains are supported. Example CMake console commands executed inside the project root directory: 
+
+<h3>Windows Visual Studio</h3>
+
+<code>cmake -G "Visual Studio 17 2022" -A Win32 -B ../AsyncMulticastDelegateBuild -S .</code>
+
+<code>cmake -G "Visual Studio 17 2022" -A x64 -B ../AsyncMulticastDelegateBuild -S .</code>
+
+<code>cmake -G "Visual Studio 17 2022" -A x64 -B ../AsyncMulticastDelegateBuild -S . -DENABLE_UNIT_TESTS=ON</code>
+
+After executed, open the Visual Studio project from within the <code>AsyncMulticastDelegateCpp11Build</code> directory.
+
+<h3>Linux Make</h3>
+
+<code>cmake -G "Unix Makefiles" -B ../AsyncMulticastDelegateBuild -S .</code>
+
+<code>cmake -G "Unix Makefiles" -B ../AsyncMulticastDelegateBuild -S . -DENABLE_UNIT_TESTS=ON</code>
+
+After executed, build the software from within the AsyncMulticastDelegateCpp11Build directory using the command <code>make</code>. Run the console app using <code>./DelegateApp</code>.
 
 <h2>Using the Code</h2>
 

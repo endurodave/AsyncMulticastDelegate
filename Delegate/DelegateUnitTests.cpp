@@ -1,3 +1,5 @@
+#ifdef DELEGATE_UNIT_TESTS
+
 #include "DelegateLib.h"
 #include <iostream>
 #if USE_STD_THREADS
@@ -2586,3 +2588,5 @@ void DelegateUnitTests()
 
 	testThread.ExitThread();
 }
+
+#endif // DELEGATE_UNIT_TESTS

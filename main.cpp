@@ -226,7 +226,9 @@ int main(void)
     timer.Start(250);
 
 	// Run all unit tests (uncomment to run unit tests)
+#ifdef DELEGATE_UNIT_TESTS
 	DelegateUnitTests();
+#endif
 
 	// Create a delegate bound to a free function then invoke
 	DelegateFree1<int> delegateFree = MakeDelegate(&FreeFuncInt);
