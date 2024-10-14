@@ -2,7 +2,7 @@
 #define _DELEGATE_REMOTE_SEND_H
 
 // DelegateRemoteSend.h
-// @see https://www.codeproject.com/Articles/5262271/Remote-Procedure-Calls-using-Cplusplus-Delegates
+// @see https://github.com/endurodave/AsyncMulticastDelegate
 // David Lafreniere, Mar 2020.
 
 #include "Delegate.h"

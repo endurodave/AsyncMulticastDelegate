@@ -13,10 +13,10 @@
 #endif
 
 // main.cpp
-// @see https://www.codeproject.com/Articles/1160934/Asynchronous-Multicast-Delegates-in-Cplusplus
+// @see https://github.com/endurodave/AsyncMulticastDelegate
 // David Lafreniere, Dec 2016.
 //
-// @see https://www.codeproject.com/Articles/5262271/Remote-Procedure-Calls-using-Cplusplus-Delegates
+// @see https://github.com/endurodave/RemoteDelegate
 // David Lafreniere, Mar 2020.
 
 using namespace std;

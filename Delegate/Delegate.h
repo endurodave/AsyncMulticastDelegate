@@ -2,7 +2,7 @@
 #define _DELEGATE_H
 
 // Delegate.h
-// @see https://www.codeproject.com/Articles/1160934/Asynchronous-Multicast-Delegates-in-Cplusplus
+// @see https://github.com/endurodave/AsyncMulticastDelegate
 // David Lafreniere, Dec 2016.
 
 #if USE_XALLOCATOR

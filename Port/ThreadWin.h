@@ -6,7 +6,8 @@
 #include "DelegateLib.h"
 #include "DataTypes.h"
 
-// See http://www.codeproject.com/Articles/1095196/Win32-Thread-Wrapper-with-Synchronized-Start
+// @see https://github.com/endurodave/ThreadWin
+// David Lafreniere
 
 /// @brief ThreadWin is class to ease the creation of worker threads. The underlying 
 ///	threads are created with the Win32 CreateThread() API.

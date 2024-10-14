@@ -1,7 +1,7 @@
 #ifndef _WORKER_THREAD_H
 #define _WORKER_THREAD_H
 
-// @see https://www.codeproject.com/Articles/1095196/Win-Thread-Wrapper-with-Synchronized-Start
+// @see https://github.com/endurodave/ThreadWin
 // David Lafreniere, Oct 2019
 
 #include "DelegateOpt.h"
