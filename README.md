@@ -7,6 +7,8 @@ A C++ standards compliant delegate library capable of targeting any callable fun
 - [Asynchronous Multicast Delegates in C++](#asynchronous-multicast-delegates-in-c)
 - [Table of Contents](#table-of-contents)
 - [Preface](#preface)
+  - [Related repositories](#related-repositories)
+  - [Library Comparison](#library-comparison)
 - [Introduction](#introduction)
 - [Delegates Background](#delegates-background)
 - [Project Build](#project-build)
@@ -49,9 +51,11 @@ A C++ standards compliant delegate library capable of targeting any callable fun
 
 Originally published on CodeProject at: <a href="http://www.codeproject.com/Articles/1160934/Asynchronous-Multicast-Delegates-in-Cplusplus"><strong>Asynchronous Multicast Delegates in C++</strong></a>
 
-<p>Related repositories:</p>
+## Related repositories
 
 * <a href="https://github.com/endurodave/IntegrationTestFramework">Integration Test Framework using Google Test and Delegates</a> - a multi-threaded C++ software integration test framework using Google Test and Delegate libraries.
+
+## Library Comparison
 
 <p>Asynchronous function invocation allows for easy movement of data between threads. The table below summarizes the various asynchronous function invocation implementations available in C and C++.</p>
 
