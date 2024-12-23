@@ -2,9 +2,19 @@
 
 A C++ standards compliant delegate library capable of targeting any callable function synchronously or asynchronously.
 
+## ⚠️ Deprecated Repository
+
+> **Warning:** This repository is no longer maintained. Please use the modern delegate library in link below.
+
+## New Repository 
+
+[cpp-async-delegate](https://github.com/endurodave/cpp-async-delegate) - Asynchronous C++ delegate library can invoke any callable function on a user-specified thread of control.
+
 # Table of Contents
 
 - [Asynchronous Multicast Delegates in C++](#asynchronous-multicast-delegates-in-c)
+  - [⚠️ Deprecated Repository](#️-deprecated-repository)
+  - [New Repository](#new-repository)
 - [Table of Contents](#table-of-contents)
 - [Preface](#preface)
   - [Related repositories](#related-repositories)
