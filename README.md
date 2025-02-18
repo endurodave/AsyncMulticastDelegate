@@ -8,7 +8,7 @@ A C++ standards compliant delegate library capable of targeting any callable fun
 
 ## New Repository 
 
-[cpp-async-delegate](https://github.com/endurodave/cpp-async-delegate) - Asynchronous C++ delegate library can invoke any callable function on a user-specified thread of control implemented in modern C++.
+[DelegateMQ](https://github.com/endurodave/DelegateMQ) - Invoke any C++ callable function synchronously, asynchronously, or on a remote endpoint..
 
 # Table of Contents
 
